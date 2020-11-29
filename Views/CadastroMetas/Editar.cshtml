@@ -1,0 +1,43 @@
+﻿@model WeBMetas.Models.CadastroMetasModel
+
+@{
+    ViewData["Title"] = "Editar";
+}
+
+@*<h2>Modo de Edição da Meta: <a style="color: coral">@Model.NomeMeta</a></h2>*@
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Editar">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="NomeMeta" class="control-label"></label>
+                <input asp-for="NomeMeta" class="form-control" />
+                <span asp-validation-for="NomeMeta" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Meta" class="control-label"></label>
+                <input asp-for="Meta" class="form-control" />
+                <span asp-validation-for="Meta" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="QtdGuardarPorMes" class="control-label"></label>
+                <input asp-for="QtdGuardarPorMes" class="form-control" />
+                <span asp-validation-for="QtdGuardarPorMes" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="LinkImagemMeta" class="control-label"></label>
+                <input asp-for="LinkImagemMeta" class="form-control" />
+                <span asp-validation-for="LinkImagemMeta" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

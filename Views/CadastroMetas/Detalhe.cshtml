@@ -1,0 +1,78 @@
+﻿@model WeBMetas.Models.CadastroMetasModel
+
+@{
+    ViewData["Title"] = "Detalhe";
+}
+
+<h2>Detalhe da Meta: <a style="color: coral">@Model.NomeMeta</a></h2>
+<br />
+<main style="flex: 1; display: flex; flex-direction: row;">
+
+    @*//SESSÃO - IMAGEM DA META*@
+    <section>
+        <div>
+            <img src="@Model.LinkImagemMeta"
+                 width="700"
+                 style="align-self: center;"
+                 asp-append-version="true" />
+        </div>
+    </section>
+    <section class="sec-info">
+        <div class="info-meta">
+            <div>
+                <h1 class="meta-titulo text-uppercase">
+                    @Html.DisplayFor(model => model.NomeMeta)
+                </h1>
+            </div>
+
+            <div style="padding-top: 15px">
+                <h1 class="meta-valor">
+                    <a>Meta R$@Html.DisplayFor(model => model.Meta)</a>
+                </h1>
+            </div>
+
+            <br />
+            <p>Valor Proposto para Guardar por Mês: </p>
+            <p class="meta-valor1">R$@Model.QtdGuardarPorMes</p>
+
+            <p>Em quantos meses terei o dinheiro: </p>
+            <p class="meta-valor1">@ViewBag.QtdMeses meses</p>
+        </div>
+
+        <div>
+            @Html.ActionLink("Editar", "Editar", new { id = Model.Id }, new { @class = "btn btn-outline-info" }) |
+            <a class="btn btn-outline-secondary" asp-action="Index">Lista de Metas</a> |
+            @Html.ActionLink("Remover", "Remover", new { id = Model.Id }, new { @class = "btn btn-outline-danger" })
+        </div>
+    </section>
+</main>
+<style>
+    .info-meta p {
+        font-size: 18px;
+    }
+
+    .meta-titulo {
+        font-size: 24px;
+        font-weight: 700;
+        color: #646464;
+    }
+
+    .meta-valor {
+        font-size: 30px !important;
+        font-weight: 700;
+        display: block;
+        padding-top: 23px;
+    }
+
+    .meta-valor1 {
+        font-size: 30px !important;
+        font-weight: 700;
+        display: block;
+    }
+
+    .sec-info {
+        flex: 1;
+        text-align-last: center;
+        align-self: center;
+    }
+</style>

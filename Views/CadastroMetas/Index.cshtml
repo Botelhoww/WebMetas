@@ -1,0 +1,68 @@
+﻿@model IEnumerable<WeBMetas.Models.CadastroMetasModel>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="Cards">
+    @foreach (var item in ViewBag.Metas)
+    {
+        <a style="text-decoration: none; color: #000" href="@Url.Action("Detalhe", "CadastroMetas", new { id = item.Id })">
+
+            <div class="Card">
+                <img src="@item.LinkImagemMeta"
+                     alt="@item.NomeMeta"
+                     width="330" height="225"
+                     style="align-self: center;"
+                     asp-append-version="true" />
+
+                <div class="Title">
+                    <span style="" class="titulo-uppercase">@item.NomeMeta</span>
+                </div>
+            </div>
+        </a>
+    }
+</div>
+<p>
+    <a class="btn btn-outline-secondary" style="width: 100%; text-align: center" asp-controller="CadastroMetas" asp-action="Registrar">Registrar Nova Meta!</a>
+</p>
+<style>
+    .titulo-uppercase {
+        text-transform: uppercase;
+    }
+
+    .Cards {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        background: #fff;
+    }
+
+    .Card {
+        overflow: hidden;
+        margin: 10px;
+        display: flex;
+        flex-direction: column;
+        max-width: 500px;
+        min-width: 300px;
+    }
+
+        .Card .Title {
+            padding: 5px 0px;
+            display: flex;
+            justify-content: center;
+            max-width: 300px;
+            text-align-last: center;
+            text-align: center;
+            color: #484848;
+            font-weight: 600;
+        }
+
+        .Card .Content {
+            flex: 1;
+            background-color: white;
+            color: black;
+            padding: 20px;
+            text-align: center;
+        }
+</style>
